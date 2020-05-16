@@ -4,11 +4,11 @@ public class ContactInfo {
 
     private String name;
     private int ID;
-    private char gender;
+    private String gender;
     private String address;
     private String emailAddress;
 
-    public ContactInfo(String name, int ID, char gender, String address, String emailAddress) {
+    public ContactInfo(String name, int ID, String gender, String address, String emailAddress) {
         this.name = name;
         this.ID = ID;
         this.gender = gender;
@@ -32,11 +32,11 @@ public class ContactInfo {
         this.ID = ID;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -54,5 +54,16 @@ public class ContactInfo {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactInfo{" +
+                "name='" + name + '\'' +
+                ", ID=" + ID +
+                ", gender='" + gender + '\'' +
+                ", address='" + address + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                '}';
     }
 }

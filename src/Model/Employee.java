@@ -3,14 +3,14 @@ package Model;
 import java.util.Date;
 
 public class Employee {
-
-    private Date hireDate;
+    private String hireDate;
     private String mangerName;
     private int departmentNumber;
     private String description;
     private ContactInfo contactInfo;
 
-    public Employee(Date hireDate, String mangerName, int departmentNumber, String description, ContactInfo contactInfo) {
+    public Employee(String hireDate, String mangerName, int departmentNumber, String description, ContactInfo contactInfo)
+    {
         this.hireDate = hireDate;
         this.mangerName = mangerName;
         this.departmentNumber = departmentNumber;
@@ -18,11 +18,11 @@ public class Employee {
         this.contactInfo = contactInfo;
     }
 
-    public Date getHireDate() {
+    public String getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(Date hireDate) {
+    public void setHireDate(String hireDate) {
         this.hireDate = hireDate;
     }
 
@@ -56,5 +56,16 @@ public class Employee {
 
     public void setContactInfo(ContactInfo contactInfo) {
         this.contactInfo = contactInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "hireDate=" + hireDate +
+                ", mangerName='" + mangerName + '\'' +
+                ", departmentNumber=" + departmentNumber +
+                ", description='" + description + '\'' +
+                ", contact Info=" + contactInfo.toString() +
+                '}';
     }
 }
