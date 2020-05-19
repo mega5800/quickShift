@@ -7,7 +7,7 @@ public class Manger extends Employee {
 
     private ArrayList<Employee> employeeList;
 
-    public Manger(Date hireDate, String mangerName, int departmentNumber, String description, ContactInfo contactInfo, ArrayList<Employee> employeeList) {
+    public Manger(String hireDate, String mangerName, int departmentNumber, String description, ContactInfo contactInfo, ArrayList<Employee> employeeList) {
         super(hireDate, mangerName, departmentNumber, description, contactInfo);
         this.employeeList = employeeList;
     }

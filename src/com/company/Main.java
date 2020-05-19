@@ -2,20 +2,18 @@ package com.company;
 
 import Controller.Controller;
 import Model.MainModel;
-import View.MainFrame;
+import View.AddNewWorker;
+
+import javax.swing.*;
 
 public class Main {
 
     public static void main(String[] args) {
-
-        MainFrame theView = new MainFrame();
-
+        /*JFrame mainFrame = new AddNewWorker("Add new worker");
+        mainFrame.setVisible(true);*/
+        AddNewWorker theView = new AddNewWorker("Add new Worker");
         MainModel theModel = new MainModel();
-
-        Controller theController = new Controller(theView,theModel);
-
+        Controller theController = new Controller(theView);
         theView.setVisible(true);
-
     }
-
 }

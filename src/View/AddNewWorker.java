@@ -1,16 +1,14 @@
-package Controller;
+package View;
 
+import Controller.Controller;
 import Model.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.util.regex.Pattern;
 
 
 public class AddNewWorker extends javax.swing.JFrame
@@ -42,7 +40,7 @@ public class AddNewWorker extends javax.swing.JFrame
 
     private Employee m_Employee;
     private ContactInfo m_ContactInfo;
-    private Controller m_Controller;
+    private static Controller m_Controller;
 
     public AddNewWorker(String i_Title) throws HeadlessException
     {
@@ -55,38 +53,18 @@ public class AddNewWorker extends javax.swing.JFrame
         setComponentsToTheRight();
         setNamesToGroups();
         setCurrentDate();
+        if (m_Controller == null) {
+            this.m_Controller = new Controller(this);
+        }
 
         m_SaveBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (checkIfEnoughTextWasEntered())
-                {
-                    if (m_IDText.getText().matches("[0-9]+") && m_IDText.getText().length() == 9) //checks ID
-                    {
-                        if (m_Controller.checkEmail())
-                        {
-                            m_ContactInfo=new ContactInfo(m_WorkerNameText.getText(),Integer.parseInt(m_IDText.getText())
-                                    ,(String)m_ComboGenderBox.getSelectedItem(),m_AddressText.getText(),m_EmailText.getText());
-                            m_Employee = new Employee(m_StartDateText.getText(),m_ManagerNameText.getText(),
-                                    Integer.parseInt(m_DepartmentNumText.getText()),m_JobDescriptionText.getText(),m_ContactInfo);
+                String strToPrint = m_Controller.addWorker(m_WorkerNameText.getText(),m_IDText.getText(),(String)m_ComboGenderBox.getSelectedItem(),
+                        m_AddressText.getText(),m_EmailText.getText(),m_ManagerNameText.getText(),m_DepartmentNumText.getText()
+                ,m_JobDescriptionText.getText(),m_StartDateText.getText());
 
-                            cleanData();
-                            System.out.print(m_Employee);
-                        }
-                        else
-                        {
-                            showMessageDialog(null, "יש להזין כתובת דואל תקינה");
-                        }
-                    }
-                    else
-                    {
-                        showMessageDialog(null, "יש להזין מספר תעודת זהות באורך 9 ספרות");
-                    }
-                }
-                else
-                {
-                    showMessageDialog(null, "יש למלא את כל הפרטים");
-                }
+                showMessageDialog(null, strToPrint);
             }
         });
         m_DeleteBtn.addActionListener(new ActionListener() {
@@ -111,58 +89,7 @@ public class AddNewWorker extends javax.swing.JFrame
         this.m_StartDateText.setText("");
     }
 
-    private boolean checkIfEnoughTextWasEntered()
-    {
-        boolean boolToReturn = true;
 
-        if (this.m_WorkerNameText.getText().isEmpty())
-        {
-            //this.m_WorkerNameText.setBackground(Color.red);
-            boolToReturn=false;
-        }
-        if (this.m_IDText.getText().isEmpty())
-        {
-            //this.m_IDText.setBackground(Color.red);
-            boolToReturn=false;
-        }
-        if ((String)this.m_ComboGenderBox.getSelectedItem() == "")
-        {
-            //this.m_ComboGenderBox.setBackground(Color.red);
-            boolToReturn=false;
-        }
-        if (this.m_AddressText.getText().isEmpty())
-        {
-            //this.m_AddressText.setBackground(Color.red);
-            boolToReturn=false;
-        }
-        if (this.m_EmailText.getText().isEmpty())
-        {
-            //this.m_EmailText.setBackground(Color.red);
-            boolToReturn=false;
-        }
-        if (this.m_ManagerNameText.getText().isEmpty())
-        {
-            //this.m_ManagerNameText.setBackground(Color.red);
-            boolToReturn=false;
-        }
-        if (this.m_DepartmentNumText.getText().isEmpty())
-        {
-            //this.m_DepartmentNumText.setBackground(Color.red);
-            boolToReturn=false;
-        }
-        if (this.m_JobDescriptionText.getText().isEmpty())
-        {
-            //this.m_JobDescriptionText.setBackground(Color.red);
-            boolToReturn=false;
-        }
-        if (this.m_StartDateText.getText().isEmpty())
-        {
-            //this.m_StartDateText.setBackground(Color.red);
-            boolToReturn = false;
-        }
-
-        return boolToReturn;
-    }
 
     private void setCurrentDate()
     {

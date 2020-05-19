@@ -1,7 +1,7 @@
 package Model;
 
-public class ContactInfo {
-
+public class ContactInfo
+{
     private String name;
     private int ID;
     private String gender;
