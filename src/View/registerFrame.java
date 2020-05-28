@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 
-public class RegisterFrame extends JFrame {
+public class registerFrame extends JFrame {
     private JTextField usernameField;
     private JRadioButton carOwnCheck;
     private JPasswordField passwordField;
@@ -27,7 +27,7 @@ public class RegisterFrame extends JFrame {
     Calendar cld = Calendar.getInstance();
     JDateChooser dateChoose = new JDateChooser(cld.getTime());
 
-    public RegisterFrame() {
+    public registerFrame() {
         this.add(registrationFrame);
         this.setTitle("Reg - CertifiCar v1.0");
         this.setSize(580,620);
