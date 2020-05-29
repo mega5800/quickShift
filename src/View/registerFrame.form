@@ -150,7 +150,9 @@
         <children>
           <component id="9c75" class="javax.swing.JLabel">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="70" height="-1"/>
+              </grid>
             </constraints>
             <properties>
               <font name="Candara" size="16" style="1"/>
@@ -158,7 +160,7 @@
               <text value="Birthday"/>
             </properties>
           </component>
-          <grid id="29bff" binding="jDatePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="29bff" binding="birthdayJPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="true">
                 <preferred-size width="50" height="50"/>
@@ -350,7 +352,7 @@
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
-              <grid id="804d7" binding="hireDateJDate" layout-manager="BorderLayout" hgap="0" vgap="0">
+              <grid id="804d7" binding="hireDateJPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints>
                   <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="true">
                     <preferred-size width="50" height="50"/>
@@ -417,16 +419,6 @@
           </grid>
         </children>
       </grid>
-      <component id="2e207" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font name="Copperplate Gothic Bold" size="36" style="1"/>
-          <foreground color="-15254730"/>
-          <text value="Add employee"/>
-        </properties>
-      </component>
       <component id="99519" class="javax.swing.JButton" binding="registerBtn">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -436,6 +428,16 @@
           <enabled value="true"/>
           <font name="Candara" size="22" style="1"/>
           <foreground color="-15254730"/>
+          <text value="Add employee"/>
+        </properties>
+      </component>
+      <component id="2e207" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Cooper Black" size="36" style="1"/>
+          <foreground color="-679142"/>
           <text value="Add employee"/>
         </properties>
       </component>
