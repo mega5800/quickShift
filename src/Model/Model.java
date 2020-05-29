@@ -1,6 +1,6 @@
 package Model;
 
-public class MainModel {
+public class Model {
     private ContactInfo contactInfo;
 
     public void addNewEmployee(ContactInfo contactInfo){

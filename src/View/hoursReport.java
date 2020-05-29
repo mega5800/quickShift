@@ -2,6 +2,7 @@ package View;
 
 import com.toedter.calendar.JDateChooser;
 
+import Model.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.Calendar;

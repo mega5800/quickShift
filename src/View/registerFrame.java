@@ -18,10 +18,14 @@ public class registerFrame extends JFrame {
     private JPanel jDatePanel;
     private JTextField emailField;
     private JComboBox<String> genderBox;
+    private JComboBox departmentNumCBox;
+    private JTextField mangerNameTxt;
+    private JTextField descriptionTxt;
+    private JPanel hireDateJDate;
     private JTextField textField1;
     private JTextField textField2;
-    private JTextField textField3;
-    private JPanel carOwnerFields;
+    private JPanel departInfoJPan;
+    private JRadioButton departEnableJRad;
     private String[] gender = {"","male","Female"};
 
     Calendar cld = Calendar.getInstance();
@@ -29,8 +33,8 @@ public class registerFrame extends JFrame {
 
     public registerFrame() {
         this.add(registrationFrame);
-        this.setTitle("Reg - CertifiCar v1.0");
-        this.setSize(580,620);
+        this.setTitle("Add employee v1.0");
+        this.setSize(660,580);
 
         this.dateChoose.setDateFormatString("dd/MM/yyyy");
         this.jDatePanel.add(dateChoose);
@@ -39,9 +43,9 @@ public class registerFrame extends JFrame {
         this.genderBox.addItem(gender[1]);
         this.genderBox.addItem(gender[2]);
 
-        carOwnCheck.addActionListener(e -> {
-            if(carOwnCheck.isSelected()) carOwnerFields.setVisible(true);
-            else carOwnerFields.setVisible(false);
+        departEnableJRad.addActionListener(e -> {
+            if(departEnableJRad.isSelected()) departInfoJPan.setVisible(true);
+            else departInfoJPan.setVisible(false);
         });
     }
 
@@ -79,6 +83,5 @@ public class registerFrame extends JFrame {
     }
 
     public void addRegisterListener (ActionListener listenForRegisterBtn){registerBtn.addActionListener(listenForRegisterBtn);}
-
 
 }

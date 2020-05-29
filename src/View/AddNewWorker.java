@@ -54,7 +54,7 @@ public class AddNewWorker extends javax.swing.JFrame
         setNamesToGroups();
         setCurrentDate();
         if (m_Controller == null) {
-            this.m_Controller = new Controller(this);
+            //this.m_Controller = new Controller(this);
         }
 
         m_SaveBtn.addActionListener(new ActionListener() {
