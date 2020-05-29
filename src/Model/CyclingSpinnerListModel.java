@@ -3,7 +3,7 @@ package Model;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 
-class CyclingSpinnerListModel extends SpinnerListModel {
+public class CyclingSpinnerListModel extends SpinnerListModel {
     Object firstValue, lastValue;
 
     SpinnerModel linkedModel = null;

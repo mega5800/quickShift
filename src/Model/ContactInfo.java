@@ -1,27 +1,42 @@
 package Model;
 
+
+import java.sql.Date;
+
 public class ContactInfo
 {
-    private String name;
+    private String firstName;
+    private String lastName;
     private int ID;
     private String gender;
     private String address;
-    private String emailAddress;
+    private String email;
+    private Date birthDayDate;
 
-    public ContactInfo(String name, int ID, String gender, String address, String emailAddress) {
-        this.name = name;
+    public ContactInfo(String firstName, String lastName, int ID, String gender, String address, String email, Date birthDayDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.ID = ID;
         this.gender = gender;
         this.address = address;
-        this.emailAddress = emailAddress;
+        this.email = email;
+        this.birthDayDate = birthDayDate;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getID() {
@@ -48,22 +63,31 @@ public class ContactInfo
         this.address = address;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getBirthDayDate() {
+        return birthDayDate;
+    }
+
+    public void setBirthDayDate(Date birthDayDate) {
+        this.birthDayDate = birthDayDate;
     }
 
     @Override
     public String toString() {
         return "ContactInfo{" +
-                "name='" + name + '\'' +
+                "first name='" + firstName + '\'' +
+                "last name='" + lastName + '\'' +
                 ", ID=" + ID +
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
+                ", emailAddress='" + email + '\'' +
                 '}';
     }
 }

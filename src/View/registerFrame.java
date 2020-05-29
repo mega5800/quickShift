@@ -15,33 +15,42 @@ public class registerFrame extends JFrame {
     private JTextField fNameField;
     private JTextField lNameField;
     private JButton registerBtn;
-    private JPanel jDatePanel;
     private JTextField emailField;
     private JComboBox<String> genderBox;
+    private JComboBox departmentNumCBox;
+    private JTextField mangerNameTxt;
+    private JTextField descriptionTxt;
     private JTextField textField1;
     private JTextField textField2;
-    private JTextField textField3;
-    private JPanel carOwnerFields;
-    private String[] gender = {"","male","Female"};
+    private JPanel departInfoJPan;
+    private JRadioButton departEnableJRad;
+    private String[] gender = {"","Male","Female"};
+
+    private JPanel hireDateJPanel;
+    private JPanel birthdayJPanel;
 
     Calendar cld = Calendar.getInstance();
-    JDateChooser dateChoose = new JDateChooser(cld.getTime());
+    JDateChooser dateChooseHireD = new JDateChooser(cld.getTime());
+    JDateChooser dateChooseBDay = new JDateChooser(cld.getTime());
 
     public registerFrame() {
         this.add(registrationFrame);
-        this.setTitle("Reg - CertifiCar v1.0");
-        this.setSize(580,620);
+        this.setTitle("Add employee");
+        this.setSize(660,560);
 
-        this.dateChoose.setDateFormatString("dd/MM/yyyy");
-        this.jDatePanel.add(dateChoose);
+        this.dateChooseHireD.setDateFormatString("dd/MM/yyyy");
+        this.dateChooseBDay.setDateFormatString("dd/MM/yyyy");
+
+        this.birthdayJPanel.add(dateChooseHireD);
+        this.hireDateJPanel.add(dateChooseBDay);
 
         this.genderBox.addItem(gender[0]);
         this.genderBox.addItem(gender[1]);
         this.genderBox.addItem(gender[2]);
 
-        carOwnCheck.addActionListener(e -> {
-            if(carOwnCheck.isSelected()) carOwnerFields.setVisible(true);
-            else carOwnerFields.setVisible(false);
+        departEnableJRad.addActionListener(e -> {
+            if(departEnableJRad.isSelected()) departInfoJPan.setVisible(true);
+            else departInfoJPan.setVisible(false);
         });
     }
 
@@ -62,7 +71,7 @@ public class registerFrame extends JFrame {
     }
 
     public Date getDate(){
-        return this.dateChoose.getDate();
+        return this.dateChooseHireD.getDate();
     }
 
     public String getEmail(){
@@ -79,6 +88,5 @@ public class registerFrame extends JFrame {
     }
 
     public void addRegisterListener (ActionListener listenForRegisterBtn){registerBtn.addActionListener(listenForRegisterBtn);}
-
 
 }
