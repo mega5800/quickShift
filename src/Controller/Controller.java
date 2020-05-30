@@ -54,7 +54,7 @@ public class Controller {
             Date BDay = registerFrame.getDate();
             String email = registerFrame.getEmail();
             String gender = registerFrame.getGender();
-            boolean carOwn = registerFrame.getCarOwner();
+
 
 
             /////////////////////////////////////////////////////////////

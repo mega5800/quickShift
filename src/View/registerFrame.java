@@ -6,28 +6,31 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 public class registerFrame extends JFrame {
-    private JTextField usernameField;
-    private JRadioButton carOwnCheck;
-    private JPasswordField passwordField;
     private JPanel registrationFrame;
-    private JTextField fNameField;
-    private JTextField lNameField;
-    private JButton registerBtn;
-    private JTextField emailField;
-    private JComboBox<String> genderBox;
-    private JComboBox departmentNumCBox;
+    private JPanel departInfoJPan;
+    private JTextField usernameTxt;
+    private JPasswordField passwordTxt;
+    private JTextField fNameTxt;
+    private JTextField lNameTxt;
     private JTextField mangerNameTxt;
     private JTextField descriptionTxt;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JPanel departInfoJPan;
-    private JRadioButton departEnableJRad;
-    private String[] gender = {"","Male","Female"};
-
+    private JTextField addressTxt;
+    private JTextField phoneNumTxt;
+    private JTextField emailTxt;
     private JPanel hireDateJPanel;
     private JPanel birthdayJPanel;
+    private JComboBox<String> genderCBox;
+    private JComboBox<Integer> departmentNumCBox;
+
+    private JRadioButton departEnableJRad;
+    private JButton registerBtn;
+
+    private String[] gender = {"","Male","Female"};
+    private Integer[] departmentNum = {9001,9002,9003};
+
 
     Calendar cld = Calendar.getInstance();
     JDateChooser dateChooseHireD = new JDateChooser(cld.getTime());
@@ -44,9 +47,13 @@ public class registerFrame extends JFrame {
         this.birthdayJPanel.add(dateChooseHireD);
         this.hireDateJPanel.add(dateChooseBDay);
 
-        this.genderBox.addItem(gender[0]);
-        this.genderBox.addItem(gender[1]);
-        this.genderBox.addItem(gender[2]);
+        this.genderCBox.addItem(gender[0]);
+        this.genderCBox.addItem(gender[1]);
+        this.genderCBox.addItem(gender[2]);
+
+        this.departmentNumCBox.addItem(departmentNum[0]);
+        this.departmentNumCBox.addItem(departmentNum[1]);
+        this.departmentNumCBox.addItem(departmentNum[2]);
 
         departEnableJRad.addActionListener(e -> {
             if(departEnableJRad.isSelected()) departInfoJPan.setVisible(true);
@@ -55,19 +62,19 @@ public class registerFrame extends JFrame {
     }
 
     public String getFName(){
-        return this.fNameField.getText();
+        return this.fNameTxt.getText();
     }
 
     public String getLName(){
-        return this.lNameField.getText();
+        return this.lNameTxt.getText();
     }
 
     public String getUsername(){
-        return this.usernameField.getText();
+        return this.usernameTxt.getText();
     }
 
     public String getPassword(){
-        return String.valueOf(this.passwordField.getPassword());
+        return String.valueOf(this.passwordTxt.getPassword());
     }
 
     public Date getDate(){
@@ -75,16 +82,27 @@ public class registerFrame extends JFrame {
     }
 
     public String getEmail(){
-        return this.emailField.getText();
-    }
-
-    public boolean getCarOwner(){
-        return this.carOwnCheck.isSelected();
+        return this.emailTxt.getText();
     }
 
     public String getGender(){
-        return this.genderBox.getSelectedItem().toString();
-        //Warning:Method invocation 'toString' may produce 'NullPointerException'//
+        return Objects.requireNonNull(this.genderCBox.getSelectedItem()).toString();
+    }
+
+    public String getMangerNameTxt() {
+        return mangerNameTxt.getText();
+    }
+
+    public String getDescriptionTxt() {
+        return descriptionTxt.getText();
+    }
+
+    public String getAddressTxt() {
+        return addressTxt.getText();
+    }
+
+    public String getPhoneNumTxt() {
+        return phoneNumTxt.getText();
     }
 
     public void addRegisterListener (ActionListener listenForRegisterBtn){registerBtn.addActionListener(listenForRegisterBtn);}
