@@ -6,63 +6,82 @@ import Model.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class Controller {
 
-    private loginFrame mainFrame;
+    private loginFrame loginFrame;
     private Model model;
-    static registerFrame registerFrame = new registerFrame();
+    static RegisterFrame registerFrame = new RegisterFrame();
+    static MenuFrame menuFrame = new MenuFrame();
 
-    public Controller(loginFrame mainFrame, Model model){
-        this.mainFrame = mainFrame;
+    public Controller(loginFrame loginFrame, Model model){
+        this.loginFrame = loginFrame;
         this.model = model;
 
 
         class signedUpListener implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
-                registerFrame = new registerFrame();
+                registerFrame = new RegisterFrame();
                 registerFrame.setVisible(true);
-                registerFrame.addRegisterListener(new registerListener());
+                registerFrame.addAddEmployeeListener(new Controller.addEmployeeListener());
+
+
             }
         }
 
         class loginListener implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainFrame.showMessage("Login success");
+
+                String username = loginFrame.getUsername();
+                String password = loginFrame.getPassword();
+
+                try {
+                    Employee employee = new Employee(new Login(username,password));
+                    if (employee.checkIfValid(new Login(username,password))){
+                        menuFrame = new MenuFrame();
+                        menuFrame.setVisible(true);
+                    }else{
+                        loginFrame.showMessage("Incorrect username or password");
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
             }
         }
 
-        this.mainFrame.addLoginListener(new loginListener());
-        this.mainFrame.addSignUpListener(new signedUpListener());
 
+        this.loginFrame.addLoginListener(new loginListener());
+        this.loginFrame.addSignUpListener(new signedUpListener());
     }
 
-    static class registerListener implements ActionListener{
+    static class addEmployeeListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
 
             //make a logical and syntax checks
             ////////////////////////////////////////////////////////////
 
-            String fName = registerFrame.getFName();
-            String lName = registerFrame.getLName();
-            String username = registerFrame.getUsername();
-            String password = registerFrame.getPassword();
-            Date BDay = registerFrame.getDate();
-            String email = registerFrame.getEmail();
-            String gender = registerFrame.getGender();
+            Login login = null;
+            try {
+                login = new Login(registerFrame.getUsername(),registerFrame.getPassword());
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            assert login != null;
+            ContactInfo ci = new ContactInfo(registerFrame.getFName(),registerFrame.getLName(),login.getId(),registerFrame.getGender(),registerFrame.getAddressTxt(),registerFrame.getEmail(), registerFrame.getBDay(),registerFrame.getPhoneNumTxt());
 
+            Date hireDate = registerFrame.getHireDate();
+            String mangerName = registerFrame.getMangerNameTxt();
+            String description = registerFrame.getDescriptionTxt();
+            int departmentNumber = Integer.parseInt(registerFrame.getDepartmentNumber());
 
-
-            /////////////////////////////////////////////////////////////
-            //              Employee employee = new Employee(username,password,fName,lName,gender,email,BDay,carOwn);
-            //              Employee.insertNewClient();
-            /////////////////////////////////////////////////////////////
-
-
+            Employee employee = new Employee(hireDate,mangerName,departmentNumber,description,ci,login);
+            employee.insertNewClient();
         }
     }
 

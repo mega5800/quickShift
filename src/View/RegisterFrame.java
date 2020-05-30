@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-public class registerFrame extends JFrame {
+public class RegisterFrame extends JFrame {
     private JPanel registrationFrame;
     private JPanel departInfoJPan;
     private JTextField usernameTxt;
@@ -26,7 +26,7 @@ public class registerFrame extends JFrame {
     private JComboBox<Integer> departmentNumCBox;
 
     private JRadioButton departEnableJRad;
-    private JButton registerBtn;
+    private JButton addEmployeeBtn;
 
     private String[] gender = {"","Male","Female"};
     private Integer[] departmentNum = {9001,9002,9003};
@@ -36,7 +36,7 @@ public class registerFrame extends JFrame {
     JDateChooser dateChooseHireD = new JDateChooser(cld.getTime());
     JDateChooser dateChooseBDay = new JDateChooser(cld.getTime());
 
-    public registerFrame() {
+    public RegisterFrame() {
         this.add(registrationFrame);
         this.setTitle("Add employee");
         this.setSize(660,560);
@@ -77,8 +77,12 @@ public class registerFrame extends JFrame {
         return String.valueOf(this.passwordTxt.getPassword());
     }
 
-    public Date getDate(){
+    public Date getHireDate(){
         return this.dateChooseHireD.getDate();
+    }
+
+    public Date getBDay(){
+        return this.dateChooseBDay.getDate();
     }
 
     public String getEmail(){
@@ -87,6 +91,10 @@ public class registerFrame extends JFrame {
 
     public String getGender(){
         return Objects.requireNonNull(this.genderCBox.getSelectedItem()).toString();
+    }
+
+    public String getDepartmentNumber(){
+        return Objects.requireNonNull(this.departmentNumCBox.getSelectedItem()).toString();
     }
 
     public String getMangerNameTxt() {
@@ -105,6 +113,7 @@ public class registerFrame extends JFrame {
         return phoneNumTxt.getText();
     }
 
-    public void addRegisterListener (ActionListener listenForRegisterBtn){registerBtn.addActionListener(listenForRegisterBtn);}
+    public void addAddEmployeeListener(ActionListener listenForaddEmployeeBtn){
+        addEmployeeBtn.addActionListener(listenForaddEmployeeBtn);}
 
 }

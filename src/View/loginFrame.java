@@ -22,7 +22,7 @@ public class loginFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public String getUserName(){
+    public String getUsername(){
         return this.usernameTextField.getText();
     }
 
