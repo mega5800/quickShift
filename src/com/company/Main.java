@@ -7,7 +7,7 @@ import View.*;
 public class Main {
 
     public static void main(String[] args) {
-        loginFrame mainView = new loginFrame();
+        LoginFrame mainView = new LoginFrame();
         Model model = new Model();
         Controller controller = new Controller(mainView,model);
         mainView.setVisible(true);

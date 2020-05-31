@@ -31,7 +31,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <focusCycleRoot value="false"/>
+            </properties>
           </component>
           <component id="30b4d" class="javax.swing.JLabel">
             <constraints>

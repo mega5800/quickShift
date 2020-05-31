@@ -3,7 +3,7 @@ package View;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public class loginFrame extends JFrame {
+public class LoginFrame extends JFrame {
     private JPanel mainFrame;
     private JPanel secLv;
     private JPanel rdLv;
@@ -12,7 +12,7 @@ public class loginFrame extends JFrame {
     private JPasswordField passwordTextField;
     private JButton loginBtn;
 
-    public loginFrame(){
+    public LoginFrame(){
 
         add(mainFrame);
         this.setTitle("QuickShift : Login");

@@ -12,13 +12,13 @@ import java.util.Date;
 
 public class Controller {
 
-    private loginFrame loginFrame;
+    private LoginFrame loginFrame;
     private Model model;
     static RegisterFrame registerFrame = new RegisterFrame();
     static MenuFrame menuFrame = new MenuFrame();
     static HoursReport hoursReport = new HoursReport();
 
-    public Controller(loginFrame loginFrame, Model model){
+    public Controller(LoginFrame loginFrame, Model model){
         this.loginFrame = loginFrame;
         this.model = model;
 
