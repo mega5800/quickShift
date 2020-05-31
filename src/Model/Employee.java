@@ -25,7 +25,8 @@ public class Employee {
     }
     public Employee(Login login){
         Connection con = ConnectionManager.getConnection();
-
+        this.login = new Login();
+        this.contactInfo = new ContactInfo();
         String username = null;
         String password = null;
 
@@ -42,6 +43,12 @@ public class Employee {
                 this.login.setId(rs.getInt("id"));
                 this.login.setUsername(username);
                 this.login.setPassword(password);
+                sql = "SELECT * from user_info WHERE id = ?";
+                 st = con.prepareStatement(sql);
+                st.setString(1,String.valueOf(this.login.getId()));
+                rs = st.executeQuery();
+                rs.next();
+                this.contactInfo.setID(rs.getInt("id"));
                 this.contactInfo.setFirstName(rs.getString("first_name"));
                 this.contactInfo.setLastName(rs.getString("last_name"));
                 this.contactInfo.setGender(rs.getString("gender"));
@@ -54,7 +61,6 @@ public class Employee {
                 this.setMangerName(rs.getString("manger_name"));
                 this.setDescription(rs.getString("description"));
             }
-
         }catch(SQLException e){
             System.out.println("Unable to retrieve data from DB");
         }

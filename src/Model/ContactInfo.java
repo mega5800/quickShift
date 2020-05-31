@@ -13,8 +13,10 @@ public class ContactInfo
     private String email;
     private Date birthDayDate;
 
+    public ContactInfo() {
+    }
 
-    public ContactInfo(String firstName, String lastName, int ID, String gender, String address, String email, Date birthDayDate,String phoneNumber) {
+    public ContactInfo(String firstName, String lastName, int ID, String gender, String address, String email, Date birthDayDate, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ID = ID;

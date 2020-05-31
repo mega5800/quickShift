@@ -11,6 +11,9 @@ public class Login {
     private String password;
     static int idGenerator = 0;
 
+    public Login() {
+    }
+
     public Login(String username, String password) throws SQLException {
         idGenerator = getCurrId();
         this.id = ++idGenerator;
