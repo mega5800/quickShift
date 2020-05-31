@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-    private static String url = "jdbc:mysql://Localhost:3306/employee";
+    private static String url = "jdbc:mysql://Localhost:3306/quickshiftdb";
     private static String driverName = "com.mysql.jdbc.Driver";
     private static String username = "root";
     private static String password = "340391@mySQL";
@@ -23,7 +23,7 @@ public class ConnectionManager {
         } catch (ClassNotFoundException ex) {
             System.out.println("Driver not found.");
         }
-        System.out.println("success");
+        System.out.println("connection status: success");
         return con;
     }
 }

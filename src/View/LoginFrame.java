@@ -3,26 +3,24 @@ package View;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public class loginFrame extends JFrame {
+public class LoginFrame extends JFrame {
     private JPanel mainFrame;
-    private JPanel fstLv;
     private JPanel secLv;
     private JPanel rdLv;
     private JLabel main_Title;
     private JTextField usernameTextField;
     private JPasswordField passwordTextField;
-    private JButton signUpBtn;
     private JButton loginBtn;
 
-    public loginFrame(){
+    public LoginFrame(){
 
         add(mainFrame);
-        this.setTitle("Test v1.0");
-        this.setSize(400,300);
+        this.setTitle("QuickShift : Login");
+        this.setSize(500,300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public String getUserName(){
+    public String getUsername(){
         return this.usernameTextField.getText();
     }
 
@@ -37,8 +35,6 @@ public class loginFrame extends JFrame {
     public void setPassword(String password){
         this.passwordTextField.setText(password);
     }
-
-    public void addSignUpListener (ActionListener listenForSignUpBtn){signUpBtn.addActionListener(listenForSignUpBtn);}
 
     public void addLoginListener(ActionListener listenForLogin){loginBtn.addActionListener(listenForLogin);}
 

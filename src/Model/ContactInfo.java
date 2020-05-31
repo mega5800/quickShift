@@ -1,26 +1,38 @@
 package Model;
 
-
-import java.sql.Date;
+import java.util.Date;
 
 public class ContactInfo
 {
+    private int id;
     private String firstName;
     private String lastName;
-    private int ID;
     private String gender;
     private String address;
+    private String phoneNumber;
     private String email;
     private Date birthDayDate;
 
-    public ContactInfo(String firstName, String lastName, int ID, String gender, String address, String email, Date birthDayDate) {
+    public ContactInfo() {
+    }
+    public ContactInfo(String firstName, String lastName, int id, String gender, String address, String email, Date birthDayDate, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.ID = ID;
+        this.id = id;
         this.gender = gender;
         this.address = address;
         this.email = email;
         this.birthDayDate = birthDayDate;
+        this.phoneNumber = phoneNumber;
+    }
+
+    ////////////////////////////////////////////     Getters and Setters     ///////////////////////////////////////////
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -39,14 +51,6 @@ public class ContactInfo
         this.lastName = lastName;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -61,6 +65,14 @@ public class ContactInfo
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -78,13 +90,14 @@ public class ContactInfo
     public void setBirthDayDate(Date birthDayDate) {
         this.birthDayDate = birthDayDate;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public String toString() {
         return "ContactInfo{" +
                 "first name='" + firstName + '\'' +
                 "last name='" + lastName + '\'' +
-                ", ID=" + ID +
+                ", ID=" + id +
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
                 ", emailAddress='" + email + '\'' +
