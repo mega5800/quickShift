@@ -4,6 +4,7 @@ import View.*;
 import Model.*;
 
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ public class Controller {
         this.model = model;
 
 
-        class signedUpListener implements ActionListener {
+        class addAddEmployeeListener implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 registerFrame = new RegisterFrame();
@@ -43,20 +44,24 @@ public class Controller {
                     if (employee.checkIfValid()){
                         menuFrame = new MenuFrame();
                         menuFrame.setVisible(true);
+                        loginFrame.setVisible(false);
+                        menuFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         menuFrame.reportHourBtnListener(new addReportHoursListener());
+                        menuFrame.addAddEmployeeListener(new addAddEmployeeListener());
+                        menuFrame.setGratingMessage(employee.getContactInfo().getFirstName(),employee.getContactInfo().getLastName());
+
+                        loginFrame.setUserName("");
+                        loginFrame.setPassword("");
                     }else{
                         loginFrame.showMessage("Incorrect username or password");
                     }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-
             }
         }
 
-
         this.loginFrame.addLoginListener(new loginListener());
-        this.loginFrame.addSignUpListener(new signedUpListener());
     }
 
     static class addEmployeeListener implements ActionListener{
@@ -73,14 +78,14 @@ public class Controller {
                 ex.printStackTrace();
             }
             assert login != null;
-            ContactInfo ci = new ContactInfo(registerFrame.getFName(),registerFrame.getLName(),login.getId(),registerFrame.getGender(),registerFrame.getAddressTxt(),registerFrame.getEmail(), registerFrame.getBDay(),registerFrame.getPhoneNumTxt());
+            ContactInfo contactInfo = new ContactInfo(registerFrame.getFName(),registerFrame.getLName(),login.getId(),registerFrame.getGender(),registerFrame.getAddressTxt(),registerFrame.getEmail(), registerFrame.getBDay(),registerFrame.getPhoneNumTxt());
 
             Date hireDate = registerFrame.getHireDate();
             String mangerName = registerFrame.getMangerNameTxt();
             String description = registerFrame.getDescriptionTxt();
             int departmentNumber = Integer.parseInt(registerFrame.getDepartmentNumber());
 
-            Employee employee = new Employee(hireDate,mangerName,departmentNumber,description,ci,login);
+            Employee employee = new Employee(hireDate,mangerName,departmentNumber,description,contactInfo,login);
             employee.insertNewEmployee();
         }
     }
@@ -92,12 +97,6 @@ public class Controller {
             hoursReport = new HoursReport();
             hoursReport.setVisible(true);
         }
-    }
-
-    public void clearFields(){
-        //mainFrame.setFNameTextField("");
-        //mainFrame.setLNameTextField("");
-        //mainFrame.setCommentTextField("");
     }
 }
 

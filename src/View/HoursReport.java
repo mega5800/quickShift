@@ -29,7 +29,7 @@ public class HoursReport extends JFrame {
     public HoursReport(){
 
         add(mainForm);
-        this.setTitle("Name Form Window");
+        this.setTitle("QuickShift : Hour report");
 
         //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800,300);
@@ -45,28 +45,12 @@ public class HoursReport extends JFrame {
 
     }
 
-    public String getFirstName(){
+    public String getEnterHour(){
         return enterHourTextField.getText();
     }
 
-    public String getLastName(){
+    public String getExitHour(){
         return exitHourTextField.getText();
-    }
-
-    public String getFullName() {
-        return this.getFirstName()+" "+this.getLastName();
-    }
-
-    public void setFNameTextField(String fNameTextField) {
-        this.enterHourTextField.setText(fNameTextField);
-    }
-
-    public void setLNameTextField(String lNameTextField) {
-        this.exitHourTextField.setText(lNameTextField);
-    }
-
-    public void setCommentTextField(String fullName) {
-        commentTextField.setText(fullName);
     }
 
     public void addGenerateListener(ActionListener listenForGenerateBtn){

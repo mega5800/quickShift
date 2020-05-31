@@ -10,7 +10,6 @@ public class loginFrame extends JFrame {
     private JLabel main_Title;
     private JTextField usernameTextField;
     private JPasswordField passwordTextField;
-    private JButton signUpBtn;
     private JButton loginBtn;
 
     public loginFrame(){
@@ -36,8 +35,6 @@ public class loginFrame extends JFrame {
     public void setPassword(String password){
         this.passwordTextField.setText(password);
     }
-
-    public void addSignUpListener (ActionListener listenForSignUpBtn){signUpBtn.addActionListener(listenForSignUpBtn);}
 
     public void addLoginListener(ActionListener listenForLogin){loginBtn.addActionListener(listenForLogin);}
 

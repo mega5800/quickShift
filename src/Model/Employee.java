@@ -124,6 +124,14 @@ public class Employee {
         }
     }
 
+    public ContactInfo getContactInfo() {
+        return contactInfo;
+    }
+
+    public void setContactInfo(ContactInfo contactInfo) {
+        this.contactInfo = contactInfo;
+    }
+
     public void updateClient() {
         Connection con = ConnectionManager.getConnection();
 

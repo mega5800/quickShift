@@ -11,6 +11,8 @@ public class MenuFrame extends JFrame{
     private JPanel topBar;
     private JPanel mainBar;
     private JPanel mainMenu;
+    private JButton addEmployeeBtn;
+    private JLabel gratingLbl;
 
     public MenuFrame(){
         this.add(mainMenu);
@@ -18,7 +20,13 @@ public class MenuFrame extends JFrame{
         this.setTitle("QuickShift");
     }
 
+    public void setGratingMessage (String fistName,String lastName){
+        this.gratingLbl.setText("Welcome Back "+fistName+" "+lastName);
+    }
+
     public void reportHourBtnListener(ActionListener listenForReportHourBtn){
         reportHourBtn.addActionListener(listenForReportHourBtn);}
+
+    public void addAddEmployeeListener(ActionListener listenForAddEmployeeBtn){addEmployeeBtn.addActionListener(listenForAddEmployeeBtn);}
 
 }
