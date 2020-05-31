@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class ContactInfo
 {
-    private int ID;
+    private int id;
     private String firstName;
     private String lastName;
     private String gender;
@@ -15,11 +15,10 @@ public class ContactInfo
 
     public ContactInfo() {
     }
-
-    public ContactInfo(String firstName, String lastName, int ID, String gender, String address, String email, Date birthDayDate, String phoneNumber) {
+    public ContactInfo(String firstName, String lastName, int id, String gender, String address, String email, Date birthDayDate, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.ID = ID;
+        this.id = id;
         this.gender = gender;
         this.address = address;
         this.email = email;
@@ -27,12 +26,13 @@ public class ContactInfo
         this.phoneNumber = phoneNumber;
     }
 
-    public int getID() {
-        return ID;
+    ////////////////////////////////////////////     Getters and Setters     ///////////////////////////////////////////
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -90,13 +90,14 @@ public class ContactInfo
     public void setBirthDayDate(Date birthDayDate) {
         this.birthDayDate = birthDayDate;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public String toString() {
         return "ContactInfo{" +
                 "first name='" + firstName + '\'' +
                 "last name='" + lastName + '\'' +
-                ", ID=" + ID +
+                ", ID=" + id +
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
                 ", emailAddress='" + email + '\'' +

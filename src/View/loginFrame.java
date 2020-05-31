@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 public class loginFrame extends JFrame {
     private JPanel mainFrame;
-    private JPanel fstLv;
     private JPanel secLv;
     private JPanel rdLv;
     private JLabel main_Title;
@@ -17,8 +16,8 @@ public class loginFrame extends JFrame {
     public loginFrame(){
 
         add(mainFrame);
-        this.setTitle("Test v1.0");
-        this.setSize(400,300);
+        this.setTitle("QuickShift : Login");
+        this.setSize(500,300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 

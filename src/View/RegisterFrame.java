@@ -113,7 +113,6 @@ public class RegisterFrame extends JFrame {
         return phoneNumTxt.getText();
     }
 
-    public void addAddEmployeeListener(ActionListener listenForaddEmployeeBtn){
-        addEmployeeBtn.addActionListener(listenForaddEmployeeBtn);}
-
+    public void addAddEmployeeListener(ActionListener listenForAddEmployeeBtn){
+        addEmployeeBtn.addActionListener(listenForAddEmployeeBtn);}
 }

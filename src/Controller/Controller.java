@@ -15,6 +15,7 @@ public class Controller {
     private Model model;
     static RegisterFrame registerFrame = new RegisterFrame();
     static MenuFrame menuFrame = new MenuFrame();
+    static HoursReport hoursReport = new HoursReport();
 
     public Controller(loginFrame loginFrame, Model model){
         this.loginFrame = loginFrame;
@@ -26,9 +27,7 @@ public class Controller {
             public void actionPerformed(ActionEvent e) {
                 registerFrame = new RegisterFrame();
                 registerFrame.setVisible(true);
-                registerFrame.addAddEmployeeListener(new Controller.addEmployeeListener());
-
-
+                registerFrame.addAddEmployeeListener(new addEmployeeListener());
             }
         }
 
@@ -41,9 +40,10 @@ public class Controller {
 
                 try {
                     Employee employee = new Employee(new Login(username,password));
-                    if (employee.checkIfValid(new Login(username,password))){
+                    if (employee.checkIfValid()){
                         menuFrame = new MenuFrame();
                         menuFrame.setVisible(true);
+                        menuFrame.reportHourBtnListener(new addReportHoursListener());
                     }else{
                         loginFrame.showMessage("Incorrect username or password");
                     }
@@ -81,7 +81,16 @@ public class Controller {
             int departmentNumber = Integer.parseInt(registerFrame.getDepartmentNumber());
 
             Employee employee = new Employee(hireDate,mangerName,departmentNumber,description,ci,login);
-            employee.insertNewClient();
+            employee.insertNewEmployee();
+        }
+    }
+
+    static class addReportHoursListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            hoursReport = new HoursReport();
+            hoursReport.setVisible(true);
         }
     }
 

@@ -23,6 +23,8 @@ public class Employee {
         this.description = description;
         this.contactInfo = contactInfo;
     }
+
+    //Employee constructor that receive Login as argument pull all the Employee data from the DB (SQL QUERY)
     public Employee(Login login){
         Connection con = ConnectionManager.getConnection();
         this.login = new Login();
@@ -48,7 +50,7 @@ public class Employee {
                 st.setString(1,String.valueOf(this.login.getId()));
                 rs = st.executeQuery();
                 rs.next();
-                this.contactInfo.setID(rs.getInt("id"));
+                this.contactInfo.setId(rs.getInt("id"));
                 this.contactInfo.setFirstName(rs.getString("first_name"));
                 this.contactInfo.setLastName(rs.getString("last_name"));
                 this.contactInfo.setGender(rs.getString("gender"));
@@ -67,7 +69,8 @@ public class Employee {
 
     }
 
-    public void insertNewClient(){
+    //Adding a new employee which takes all the variables and insert it to the DB (SQL QUERY)
+    public void insertNewEmployee(){
         Connection con = ConnectionManager.getConnection();
 
         int id = this.login.getId();
@@ -120,6 +123,7 @@ public class Employee {
             throwable.printStackTrace();
         }
     }
+
     public void updateClient() {
         Connection con = ConnectionManager.getConnection();
 
@@ -127,7 +131,7 @@ public class Employee {
         String password = this.login.getPassword();
 
         try {
-            String query = "UPDATE logininfo SET username = ?, password = ? WHERE username = ?";
+            String query = "UPDATE login_info SET username = ?, password = ? WHERE username = ?";
             PreparedStatement prepStmt = con.prepareStatement(query);
             prepStmt.setString(1,username);
             prepStmt.setString(2,password);
@@ -137,16 +141,38 @@ public class Employee {
             throwable.printStackTrace();
         }
     }
-    public boolean checkIfValid(Login login){
-        return (login.getUsername().equals(this.login.getUsername()) && login.getPassword().equals(this.login.getPassword()));
-    }
 
+    //Check if the given username and password is in the database (SQL QUERY)
+    public boolean checkIfValid(){
+        Connection con = ConnectionManager.getConnection();
+
+        String username = null;
+        String password = null;
+
+        try{
+            String sql = "SELECT * FROM login_info WHERE username = ?";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1,login.getUsername());
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            username =  rs.getString("username");
+            password =  rs.getString("password");
+            return (username.equals(this.login.getUsername()) && password.equals(this.login.getPassword()));
+
+
+        }catch(SQLException e){
+            System.out.println("Unable to login");
+        }
+
+        return false;
+    }
 
 
     private static java.sql.Date convertUtilToSql(java.util.Date uDate) {
         return new java.sql.Date(uDate.getTime());
     }
 
+    ////////////////////////////////////////////     Getters and Setters     ///////////////////////////////////////////
     public Date getHireDate() {
         return hireDate;
     }
@@ -178,7 +204,7 @@ public class Employee {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public String toString() {

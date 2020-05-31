@@ -13,7 +13,6 @@ public class Login {
 
     public Login() {
     }
-
     public Login(String username, String password) throws SQLException {
         idGenerator = getCurrId();
         this.id = ++idGenerator;
@@ -21,8 +20,8 @@ public class Login {
         this.password = password;
     }
 
-
-    static int getCurrId() throws SQLException {
+    //gets the last id value from the given DB
+    static int getCurrId() {
         Connection con = ConnectionManager.getConnection();
 
         int id=0;
@@ -45,6 +44,7 @@ public class Login {
         return id;
     }
 
+    ////////////////////////////////////////////     Getters and Setters     ///////////////////////////////////////////
     public int getId() {
         return id;
     }
@@ -68,4 +68,5 @@ public class Login {
     public void setPassword(String password) {
         this.password = password;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

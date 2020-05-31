@@ -2,10 +2,11 @@ package View;
 
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 
 public class MenuFrame extends JFrame{
-    private JButton reportHourButton;
+    private JButton reportHourBtn;
     private JPanel sideBar;
     private JPanel topBar;
     private JPanel mainBar;
@@ -16,5 +17,8 @@ public class MenuFrame extends JFrame{
         this.setSize(1000,600);
         this.setTitle("QuickShift");
     }
+
+    public void reportHourBtnListener(ActionListener listenForReportHourBtn){
+        reportHourBtn.addActionListener(listenForReportHourBtn);}
 
 }

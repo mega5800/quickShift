@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 
-public class hoursReport extends JFrame {
+public class HoursReport extends JFrame {
 
     private JTextField enterHourTextField;
     private JTextField exitHourTextField;
@@ -26,12 +26,12 @@ public class hoursReport extends JFrame {
     JDateChooser dateChoose = new JDateChooser(cld.getTime());
 
 
-    public hoursReport(){
+    public HoursReport(){
 
         add(mainForm);
         this.setTitle("Name Form Window");
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800,300);
 
         //Calender:
