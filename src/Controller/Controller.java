@@ -44,7 +44,7 @@ public class Controller {
                     if (employee.checkIfValid()){
                         menuFrame = new MenuFrame();
                         menuFrame.setVisible(true);
-                        loginFrame.setVisible(false);
+                        //loginFrame.setVisible(false);
                         menuFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         menuFrame.reportHourBtnListener(new addReportHoursListener());
                         menuFrame.addAddEmployeeListener(new addAddEmployeeListener());

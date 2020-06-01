@@ -16,7 +16,7 @@ public class LoginFrame extends JFrame {
 
         add(mainFrame);
         this.setTitle("QuickShift : Login");
-        this.setSize(500,300);
+        this.setSize(660,300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
