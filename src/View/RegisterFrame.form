@@ -32,6 +32,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <focusCycleRoot value="false"/>
             </properties>
           </component>
